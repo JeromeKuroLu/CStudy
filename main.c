@@ -1,7 +1,9 @@
 #define __STDC_WANT_LIB_EXT1__ 1
 #include <string.h>
 #include <stdio.h>
+#include <io.h>
 #include <ctype.h>
+#include <afxres.h>
 
 #ifdef __STDC_NO_VLA__
     printf("Variable length arrays are not support./n");
@@ -82,15 +84,44 @@ int main() {
 //    printf("how many items are validated? %f\n", status.validated);
 //    printf("status size is: %u\n", sizeof(status));
 
-    char str[100];
-    int *p;
-    int count = 3;
-    while (count > 0) {
-        printf("please input something:");
-        scanf("%s %d", str, p);
-        printf("\ninput is: %s %d\n", str, *p);
-        count--;
-    }
+//    char str[100];
+//    int *p;
+//    int count = 3;
+//    while (count > 0) {
+//        printf("please input something:");
+//        scanf("%s %d", str, p);
+//        printf("\ninput is: %s %d\n", str, *p);
+//        count--;
+//    }
+
+//    char curDir[80];
+//    getcwd(curDir,sizeof(curDir));
+//    printf("current working directory: %s\n", curDir);
+//    FILE *myFile = NULL;
+//    char *fileDir = "..\\myFile.txt";
+//    if (access(fileDir, 0) < 0) {
+//        myFile = fopen(fileDir, "w");
+//        fclose(myFile);
+//    }
+//    myFile = fopen(fileDir, "r+");
+//    char ch = fprintf(myFile, "This is testing for fprintf...\ntest:");
+//    if (ch == EOF) {
+//        printf("fprintf failed.");
+//    }
+//    fseek(myFile, 1, SEEK_CUR);
+//    fputs("This is testing for fputs...\n", myFile);
+//    fclose(myFile);
+
+    FILE *myFile = NULL;
+    myFile = fopen("..//myFile.txt", "r+");
+    char *buff;
+    fscanf(myFile, "%s", buff);
+    printf("1 : %s\n", buff);
+    fgets(buff, 255, myFile);
+    printf("2: %s\n", buff);
+    fgets(buff, 255, myFile);
+    printf("3: %s\n", buff);
+    fclose(myFile);
 
     return 0;
 }
